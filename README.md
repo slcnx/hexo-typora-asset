@@ -3,14 +3,24 @@
 
 使用方法
 
-```bash
-npm install hexo-typora-asset --registry https://registry.npmjs.org --save
-```
+1. hexo 站点配置文件更新`post_asset_folder: true`
 
-```bash
-hexo clean
-hexo g
-```
+2. 安装插件 
+
+   ```bash
+   npm install hexo-typora-asset --registry https://registry.npmjs.org --save
+   ```
+
+3. typora更新插入图片的存储路径
+
+   ![image-20211217105549575](README/image-20211217105549575.png)
+
+4. 重新渲染网站
+
+   ```bash
+   hexo clean
+   hexo g
+   ```
 
 # 面临的问题
 
