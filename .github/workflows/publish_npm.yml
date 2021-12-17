@@ -1,3 +1,5 @@
+# referer: https://github.com/marketplace/actions/npm-publish
+
 name: publish npm to registry
 on: push
 
