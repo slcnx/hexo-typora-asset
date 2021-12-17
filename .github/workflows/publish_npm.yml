@@ -17,13 +17,20 @@ jobs:
       # - run: npm test
       - node_modules/.bin/eslint.cmd lib/index.js --fix
       - node_modules/.bin/eslint.cmd index.js --fix
-      - run: npm version
+
+      # 当提交消息包含publish major|minor就更新相应的版本，其他就更新patch
+      - if: contain(github.event.head_commit.message, 'publish major')
+        run: npm version major
+      - if: failure() && contain(github.event.head_commit.message, 'publish minor')
+        run: npm version minor
+      - if: failure()
+        run: npm version patch
+
       - uses: JS-DevTools/npm-publish@v1
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
           dry-run: true
-          type: 'patch'
       - if: steps.publish.outputs.type != 'none'
         run: |
           echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
