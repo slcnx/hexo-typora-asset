@@ -1,6 +1,6 @@
 {
   "name": "hexo-typora-asset",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "typora默认的相对图片路径, hexo也支持",
   "main": "index.js",
   "directories": {
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/slcnx/hexo-typora-asset/issues"
   },
-  "homepage": "https://github.com/slcnx/hexo-typora-asset#readme"
+  "homepage": "https://github.com/slcnx/hexo-typora-asset#readme",
+  "devDependencies": {
+    "eslint-config-hexo": "^4.2.0"
+  }
 }
