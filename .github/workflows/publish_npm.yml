@@ -15,6 +15,9 @@ jobs:
           node-version: 10
       - run: npm install
       # - run: npm test
+      - node_modules/.bin/eslint.cmd lib/index.js --fix
+      - node_modules/.bin/eslint.cmd index.js --fix
+      - run: npm version
       - uses: JS-DevTools/npm-publish@v1
         id: publish
         with:
