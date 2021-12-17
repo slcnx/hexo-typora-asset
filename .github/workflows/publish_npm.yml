@@ -17,6 +17,8 @@ jobs:
       # - run: npm test
       - name: 代码质量检测
         run: |
+          ls
+          pwd
           node_modules/.bin/eslint.cmd lib/index.js --fix || true
           node_modules/.bin/eslint.cmd index.js --fix
 
