@@ -21,8 +21,8 @@ jobs:
           ls
           ls node_modules/
           ls node_modules/.bin/
-          node_modules/.bin/eslint.cmd lib/index.js --fix || true
-          node_modules/.bin/eslint.cmd index.js --fix
+          node node_modules/eslint/bin/eslint.js  index.js --fix || true
+          node node_modules/eslint/bin/eslint.js lib/index.js --fix
 
       # 当提交消息包含publish major|minor就更新相应的版本，其他就更新patch
       - name: 基于提交信息自动更新版本号
