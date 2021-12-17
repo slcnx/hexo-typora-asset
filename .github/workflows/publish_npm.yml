@@ -19,8 +19,11 @@ jobs:
         run: |
           set -v
           ls
-          ls node_modules/
+          sleep 1
+          ls  node_modules/
+          sleep 1
           ls node_modules/.bin/
+          sleep 1
           node node_modules/eslint/bin/eslint.js  index.js --fix || true
           node node_modules/eslint/bin/eslint.js lib/index.js --fix
 
