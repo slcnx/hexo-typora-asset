@@ -15,16 +15,25 @@ jobs:
           node-version: 10
       - run: npm install
       # - run: npm test
-      - node_modules/.bin/eslint.cmd lib/index.js --fix
-      - node_modules/.bin/eslint.cmd index.js --fix
+      - name: 代码质量检测
+        run: |
+          node_modules/.bin/eslint.cmd lib/index.js --fix || true
+          node_modules/.bin/eslint.cmd index.js --fix
 
       # 当提交消息包含publish major|minor就更新相应的版本，其他就更新patch
-      - if: contain(github.event.head_commit.message, 'publish major')
-        run: npm version major
-      - if: failure() && contain(github.event.head_commit.message, 'publish minor')
-        run: npm version minor
-      - if: failure()
-        run: npm version patch
+      - name: 基于提交信息自动更新版本号
+        run: |
+          echo "当前提交信息, ${{ github.event.head_commit.message }}"
+          isPublishMajor=$(echo "${{github.event.head_commit.message}}" | grep -q "publish major")
+          isPublishMinor=$(echo "${{github.event.head_commit.message}}" | grep -q "publish minor")
+
+          if [ -n "$isPublishMajor" ]; then
+            npm version major
+          elif [ -n "$isPublishMinor" ]; then
+            npm version minor
+          else 
+            npm version patch
+          fi
 
       - uses: JS-DevTools/npm-publish@v1
         id: publish
