@@ -1,6 +1,6 @@
 {
   "name": "hexo-typora-asset",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "typora默认的相对图片路径, hexo也支持",
   "main": "index.js",
   "directories": {
