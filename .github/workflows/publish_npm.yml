@@ -29,10 +29,9 @@ jobs:
       # 当提交消息包含publish major|minor就更新相应的版本，其他就更新patch
       - name: 基于提交信息自动更新版本号
         run: |
-          echo "当前提交信息, ${{ github.event.head_commit.message }}"
           isPublishMajor=$(echo "${{github.event.head_commit.message}}" | grep -q "publish major")
           isPublishMinor=$(echo "${{github.event.head_commit.message}}" | grep -q "publish minor")
-
+          echo "$isPublishMajor $isPublishMinor"
           if [ -n "$isPublishMajor" ]; then
             npm version major
           elif [ -n "$isPublishMinor" ]; then
