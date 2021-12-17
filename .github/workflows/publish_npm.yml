@@ -4,6 +4,21 @@ name: publish npm to registry
 on: push
 
 jobs:
+  eslint_check:
+    name: Prepare action
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout action must run prior to eslint check
+    - name: Checkout 
+      uses: actions/checkout@v1
+    - name: Lint
+      uses: Krizzu/eslint-check-action@v1.1.0
+      with:
+        ghToken: ${{ secrets.GITHUB_TOKEN }}
+        eslintFiles: "lib, scripts"
+        eslintConfig: "myConfigs/eslint.config.js",
+        eslintExt: "ts, tsx"
+
   publish:
     runs-on: ubuntu-latest
     environment:
@@ -15,14 +30,6 @@ jobs:
           node-version: 10
       - run: npm install
       # - run: npm test
-      - name: 代码质量检测
-        run: |
-          set -v
-          ls node_modules/eslint/bin/
-          sleep 1
-          node node_modules/eslint/bin/eslint.js  index.js --fix || true
-          node node_modules/eslint/bin/eslint.js lib/index.js --fix
-
       # 当提交消息包含publish major|minor就更新相应的版本，其他就更新patch
       - name: 基于提交信息自动更新版本号
         run: |
