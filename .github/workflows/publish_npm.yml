@@ -1,4 +1,6 @@
-# referer: https://github.com/marketplace/actions/npm-publish
+1
+1
+1# referer: https://github.com/marketplace/actions/npm-publish
 
 name: publish npm to registry
 on: push
@@ -16,6 +18,7 @@ jobs:
       with:
         ghToken: ${{ secrets.GITHUB_TOKEN }}
   publish:
+    needs: eslint_check
     runs-on: ubuntu-latest
     environment:
       name: dev
@@ -31,17 +34,6 @@ jobs:
         shell: bash
         run: |
           echo "${{github.event.head_commit.message }}"
-           echo "${{github.event.head_commit.message }}" | grep "publish major"
-          isPublishMajor=$( echo "${{github.event.head_commit.message }}" | grep "publish major")
-          isPublishMinor=$( echo "${{github.event.head_commit.message }}" | grep "publish minor")
-          echo "$isPublishMajor $isPublishMinor"
-          if [ -n "$isPublishMajor" ]; then
-            npm version major
-          elif [ -n "$isPublishMinor" ]; then
-            npm version minor
-          else 
-            npm version patch
-          fi
 
       - uses: JS-DevTools/npm-publish@v1
         id: publish
