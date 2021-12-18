@@ -31,13 +31,12 @@ jobs:
       - name: 基于提交信息自动更新版本号
         shell: bash
         run: |
-          echo ${{ toJson(github) }}
           git config user.name ${{ github.event.head_commit.author.name }}
           git config user.email ${{ github.event.head_commit.author.email }}
 
           check_npmVersion_by_commit=".github/scripts/1.check_npmVersion_by_commit.sh"
           chmod +x $check_npmVersion_by_commit
-          bash $check_npmVersion_by_commit "${{github.event.head_commit.message }}"
+          ./$check_npmVersion_by_commit "${{github.event.head_commit.message }}"
 
       - uses: JS-DevTools/npm-publish@v1
         id: publish

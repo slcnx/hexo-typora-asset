@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo hello world
 gitHeadCommitMessge="$1"
 isPublishMajor=$( echo "${gitHeadCommitMessge}" | grep "publish major")
 isPublishMinor=$( echo "${gitHeadCommitMessge}" | grep "publish minor")
