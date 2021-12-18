@@ -31,6 +31,7 @@ jobs:
       - name: 基于提交信息自动更新版本号
         shell: bash
         run: |
+          echo ${{ toJson(github) }}
           check_npmVersion_by_commit=".github/scripts/1.check_npmVersion_by_commit.sh"
           chmod +x $check_npmVersion_by_commit
           bash $check_npmVersion_by_commit "${{github.event.head_commit.message }}"
