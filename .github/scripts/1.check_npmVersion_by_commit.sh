@@ -1,5 +1,4 @@
 #!/bin/bash
-set -v 
 
 gitHeadCommitMessge="$1"
 isPublishMajor=$( echo "${gitHeadCommitMessge}" | grep "publish major")
