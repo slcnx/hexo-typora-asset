@@ -30,10 +30,10 @@ jobs:
       - name: 基于提交信息自动更新版本号
         shell: bash
         run: |
-          echo "${github.event.head_commit.message}"
-          echo "${github.event.head_commit.message}" | grep "publish major"
-          isPublishMajor=$(echo "${github.event.head_commit.message}" | grep "publish major")
-          isPublishMinor=$(echo "${github.event.head_commit.message}" | grep "publish minor")
+          echo "${{github.event.head_commit.message }}"
+           echo "${{github.event.head_commit.message }}" | grep "publish major"
+          isPublishMajor=$( echo "${{github.event.head_commit.message }}" | grep "publish major")
+          isPublishMinor=$( echo "${{github.event.head_commit.message }}" | grep "publish minor")
           echo "$isPublishMajor $isPublishMinor"
           if [ -n "$isPublishMajor" ]; then
             npm version major
