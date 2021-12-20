@@ -28,8 +28,8 @@ jobs:
     - run: npm test
     - run: git config --global user.email "1062670898@qq.com"
     - run: git config --global user.name " ${{ github.actor }}"
-    - run: npm version ${{ github.event.inputs.newversion }}
     - run: npm run version
+    - run: npm version ${{ github.event.inputs.newversion }}
     - run: npm publish
       env:
         GH_RELEASE_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
