@@ -18,7 +18,7 @@
     "build": " echo do something",
     "version": "run-s prepare version:*",
     "version:changelog": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:'",
-    "version:git": "git add .",
+    "version:git": "git add . && git commit -m 'fix lint",
     "prepublishOnly": "git push --follow-tags && gh-release -y"
   },
   "repository": {
