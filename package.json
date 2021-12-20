@@ -15,6 +15,7 @@
     "prepare": "npm run build",
     "prebuild": "npm run clean -s",
     "build": " echo do something",
+    "preversion": "git add . && git commit -m 'version prepare' ",
     "version": "run-s prepare version:*",
     "version:changelog": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:'",
     "version:git": "git add .",
