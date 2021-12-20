@@ -32,6 +32,7 @@ jobs:
     - run: git config --global user.name " ${{ github.actor }}"
     - run: git add . && git commit -m 'version prepare'
     - name: npm version && npm publish
+      if: always()
       uses: bcomnes/npm-bump@v2.0.1
       with:
         git_email: bcomnes@gmail.com
