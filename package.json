@@ -11,7 +11,6 @@
     "pretest": "npm run lint",
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
-    "posttest": "git add . && git commit -m 'version prepare'",
     "clean": "rimraf dist/*",
     "prepare": "npm run build",
     "prebuild": "npm run clean -s",
