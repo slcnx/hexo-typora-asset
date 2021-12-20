@@ -11,7 +11,7 @@
     "pretest": "npm run lint",
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
-    "test:standard": "standard",
+    "test:standard": "standard --fix",
     "test:tap": "tap",
     "clean": "rimraf dist/*",
     "prebuild": "npm run clean -s",
