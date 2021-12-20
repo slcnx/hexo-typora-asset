@@ -31,13 +31,11 @@ jobs:
     - run: git config --global user.email "1062670898@qq.com"
     - run: git config --global user.name " ${{ github.actor }}"
     - run: git add . && git commit -m 'version prepare'
-    - run: npm version ${{ github.event.inputs.newversion }}
-    - name: npm publish
-      uses: JS-DevTools/npm-publish@v1
-      id: publish
+    - name: npm version && npm publish
+      uses: bcomnes/npm-bump@v2.0.1
       with:
-        token: ${{ secrets.NPM_TOKEN }}
-        dry-run: true
-    - if: steps.publish.outputs.type != 'none'
-      run: |
-        echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+        git_email: bcomnes@gmail.com
+        git_username: ${{ github.actor }}
+        newversion: ${{ github.event.inputs.newversion }}
+        github_token: ${{ secrets.GITHUB_TOKEN }} # built in actions token.  Passed tp gh-release if in use.
+        npm_token: ${{ secrets.NPM_TOKEN }} # user set secret token generated at npm
