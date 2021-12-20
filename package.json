@@ -12,7 +12,7 @@
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
     "test:standard": "standard --fix",
-    "posttest": "git add . && git commit -m 'fix lint'",
+    "posttest": "git add ./* && git commit -m 'finished'",
     "clean": "rimraf dist/*",
     "prepare": "npm run build",
     "prebuild": "npm run clean -s",
