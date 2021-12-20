@@ -7,7 +7,15 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist/*",
+    "prebuild": "npm run clean -s",
+    "test": "mocha test/",
+    "test:deps": "dependency-check . --no-dev --no-peer",
+    "test:standard": "standard",
+    "test:tap": "tap",
+    "lint": "eslint **.js --fix",
+    "pretest": "npm run lint",
+    "version": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -25,6 +33,10 @@
   },
   "homepage": "https://github.com/slcnx/hexo-typora-asset#readme",
   "devDependencies": {
-    "eslint-config-hexo": "^4.2.0"
+    "auto-changelog": "^2.3.0",
+    "dependency-check": "^4.1.0",
+    "eslint-config-hexo": "^4.2.0",
+    "npm-run-all2": "^5.0.2",
+    "rimraf": "^2.7.1"
   }
 }
