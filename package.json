@@ -7,19 +7,18 @@
     "lib": "lib"
   },
   "scripts": {
-    "lint": "eslint **.js --fix",
+    "lint": "eslint **.js",
     "pretest": "npm run lint",
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
-    "test:standard": "standard --fix",
-    "posttest": "git add ./* && git commit -m 'finished'",
+    "test:standard": "standard",
     "clean": "rimraf dist/*",
     "prepare": "npm run build",
     "prebuild": "npm run clean -s",
     "build": " echo do something",
     "version": "run-s prepare version:*",
     "version:changelog": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:'",
-    "version:git": "git add . ",
+    "version:git": "git add .",
     "prepublishOnly": "git push --follow-tags && gh-release -y"
   },
   "repository": {
