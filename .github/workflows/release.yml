@@ -26,7 +26,7 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: npm i
     - run: npm test
-    - run: git config --global user.email "user@email.com"
+    - run: git config --global user.email "1062670898@qq.com"
     - run: git config --global user.name " ${{ github.actor }}"
     - run: npm version ${{ inputs.newversion }}
     - run: npm publish

@@ -12,7 +12,7 @@
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
     "test:standard": "standard --fix",
-    "test:tap": "tap",
+    // "test:tap": "tap",
     "clean": "rimraf dist/*",
     "prebuild": "npm run clean -s",
     "build": " echo do something",
