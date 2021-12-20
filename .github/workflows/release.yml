@@ -13,6 +13,8 @@ env:
 jobs:
   version_and_release:
     runs-on: ubuntu-latest
+    environment:
+      name: dev
     steps:
     - uses: actions/checkout@v2.3.2
       with:
