@@ -12,13 +12,14 @@
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
     "test:standard": "standard --fix",
+    "posttest": "git add . && git commit -m 'fix lint'",
     "clean": "rimraf dist/*",
     "prepare": "npm run build",
     "prebuild": "npm run clean -s",
     "build": " echo do something",
     "version": "run-s prepare version:*",
     "version:changelog": "auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:'",
-    "version:git": "git add . && git commit -m 'fix lint'",
+    "version:git": "git add . ",
     "prepublishOnly": "git push --follow-tags && gh-release -y"
   },
   "repository": {
