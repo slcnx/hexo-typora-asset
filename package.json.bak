@@ -7,8 +7,11 @@
     "lib": "lib"
   },
   "scripts": {
+    "lint": "eslint **.js",
+    "pretest": "npm run lint",
     "test": "run-s test:*",
     "test:deps": "dependency-check . --no-dev --no-peer",
+    "test:standard": "standard",
     "clean": "rimraf dist/*",
     "prepare": "npm run build",
     "prebuild": "npm run clean -s",
@@ -36,8 +39,14 @@
   "devDependencies": {
     "auto-changelog": "^2.3.0",
     "dependency-check": "^4.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-hexo": "^4.2.0",
     "gh-release": "^6.0.1",
     "npm-run-all2": "^5.0.2",
-    "rimraf": "^2.7.1"
+    "rimraf": "^2.7.1",
+    "standard": "^16.0.4"
+  },
+  "dependencies": {
+    "hexo": "^5.4.0"
   }
 }
