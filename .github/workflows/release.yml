@@ -26,13 +26,11 @@ jobs:
         node-version: ${{ env.node_version }}
         # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
-    - run: npm i
+    - run: npm ci
     - run: npm test
     - run: git config --global user.email "1062670898@qq.com"
     - run: git config --global user.name " ${{ github.actor }}"
-    - run: git add . && git commit -m 'version prepare'
     - name: npm version && npm publish
-      if: always()
       uses: bcomnes/npm-bump@v2.0.2
       with:
         git_email: bcomnes@gmail.com
